@@ -10,7 +10,7 @@ $action=$meth.'Action';
 
 $controller= new $controllerClassName;
 
-var_dump($controller->$action());
+$controller->$action();
 
 
 
