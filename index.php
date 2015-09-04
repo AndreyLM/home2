@@ -6,7 +6,7 @@ $contr=isset($_GET['Contr']) ? $_GET['Contr'] : 'News';
 $meth=isset($_GET['Action']) ? $_GET['Action'] : 'GetAll';
 
 $controllerClassName=$contr.'Controller';
-$action=$meth.'Action';
+$action='action'.$meth;
 
 $controller= new $controllerClassName;
 

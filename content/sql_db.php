@@ -32,4 +32,10 @@ class mysql_db
         $query='SELECT * FROM '. $table;
         return $this->query($query, $class);
     }
+
+    public function GetById($table, $id=1)
+    {
+        $query='SELECT * FROM '.$table.' WHERE id='.$id;
+        return $this->query($query, $table);
+    }
 }

@@ -7,10 +7,17 @@ class News
     public $title;
     public $text;
     public $created_date;
+    const TABLE="News";
 
     public static function GetAll()
     {
         $bd=new mysql_db();
-        return $bd->GetAll('news', 'News');
+        return $bd->GetAll('news', self::TABLE);
+    }
+
+    public  static  function GetOne($id)
+    {
+        $db=new mysql_db();
+        return $db->GetById(self::TABLE, $id);
     }
 }
