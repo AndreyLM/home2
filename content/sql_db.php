@@ -38,4 +38,10 @@ class mysql_db
         $query='SELECT * FROM '.$table.' WHERE id='.$id;
         return $this->query($query, $table);
     }
+
+    public function AddNews($title, $text, $table)
+    {
+        $query='INSERT INTO '.$table.' (title, text) VALUES ("'.$title.'", "'.$text.'")';
+        return $this->exec($query);
+    }
 }
