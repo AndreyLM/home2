@@ -8,7 +8,7 @@
  */
 class ViewConstuctor
 {
-    private $data;
+    public $data;
 
     public function Data($items)
     {
@@ -17,10 +17,10 @@ class ViewConstuctor
 
     public function Display($viewName)
     {
-        if (file_exists(__DIR__.'/'.$viewName.'php')) {
-            include __DIR__.'/'.$viewName.'php';
+        if (file_exists(__DIR__.'/'.$viewName.'.php')) {
+            include __DIR__.'/'.$viewName.'.php';
         } else {
-            echo 'Coud not find the page '.$viewName.'php';
+            echo 'Coud not find the page '.$viewName.'.php';
         }
     }
 
