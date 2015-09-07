@@ -20,11 +20,6 @@ class ViewConstuctor
         return $this->data[$k];
     }
 
-    public function Data($items)
-    {
-        $this->data=$items;
-    }
-
     public function Display($viewName)
     {
 
@@ -35,8 +30,9 @@ class ViewConstuctor
         if (file_exists(__DIR__.'/'.$viewName.'.php')) {
             include __DIR__.'/'.$viewName.'.php';
         } else {
-            echo 'Coud not find the page '.$viewName.'.php';
+            echo 'Could not find the page '.$viewName.'.php';
         }
+
     }
 
 }

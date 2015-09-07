@@ -18,10 +18,9 @@ class NewsController
         if(isset($_GET['id'])) {
             $article=News::GetOne($_GET['id']);
             $view=new ViewConstuctor();
-            $view->Data($article);
+            $view->article=$article;
             $view->Display('DisplayArticle');
 
-//            include __DIR__.'/../views/DisplayArticle.php';
         } else {
             echo 'The article you are searching is not available';
         }
