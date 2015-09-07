@@ -5,11 +5,12 @@ class NewsController
 {
     public function actionGetAll()
     {
+
         $article=News::GetAll();
         $view=new ViewConstuctor();
-        $view->Data($article);
+        $view->items=$article;
         $view->Display('news');
-        //include_once __DIR__.'/../views/news.php';
+
     }
 
     public function actionGetOne()
