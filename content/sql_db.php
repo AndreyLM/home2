@@ -4,6 +4,7 @@ class mysql_db
 {
     public function __construct()
     {
+
         mysql_connect('localhost', 'root', '') or die ('Error connecting to database');
         mysql_select_db('home2');
     }

@@ -6,7 +6,8 @@ class NewsController
     public function actionGetAll()
     {
 
-        $article=News::GetAll();
+        $article=News::newsGetAll();
+        var_dump($article); die;
         $view=new ViewConstuctor();
         $view->items=$article;
         $view->Display('news');

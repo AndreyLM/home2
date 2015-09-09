@@ -1,19 +1,17 @@
 <?php
 require_once __DIR__.'/../content/sql_db.php';
+require_once __DIR__.'/AbstractModel.php';
 
 class News
+    extends AbstractModel
 {
     public $id;
     public $title;
     public $text;
     public $created_date;
-    const TABLE="News";
+    protected  static $tableName="News";
 
-    public static function GetAll()
-    {
-        $bd=new mysql_db();
-        return $bd->GetAll('news', self::TABLE);
-    }
+
 
     public  static  function GetOne($id)
     {
