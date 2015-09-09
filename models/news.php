@@ -26,4 +26,6 @@ class News
         $db=new mysql_db();
         return $db->AddNews($title, $text, self::TABLE);
     }
+
+
 }

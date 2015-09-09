@@ -2,4 +2,5 @@
     <h1><?php echo $value->title; ?></h1>
     <p><?php echo $value->text; ?></p>
     <p><?php echo $value->created_date; ?></p>
+    <p><a href="/home2/index.php?Contr=News&Action=GetOne&id=<?php echo $value->id; ?>">Read more...</a></p>
 <?php endforeach; ?>

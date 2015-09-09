@@ -27,8 +27,11 @@ class ViewConstuctor
             $$key=$val;
         }
 
-        if (file_exists(__DIR__.'/'.$viewName.'.php')) {
-            include __DIR__.'/'.$viewName.'.php';
+        if (file_exists(__DIR__.'/../views/News/'.$viewName.'.php')) {
+            include __DIR__.'/../views/News/'.$viewName.'.php';
+        } elseif (file_exists(__DIR__.'/../views/Admin/'.$viewName.'.php')) {
+            include __DIR__.'/../views/Admin/'.$viewName.'.php';
+
         } else {
             echo 'Could not find the page '.$viewName.'.php';
         }

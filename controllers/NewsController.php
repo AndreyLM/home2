@@ -15,6 +15,7 @@ class NewsController
 
     public function actionGetOne()
     {
+
         if(isset($_GET['id'])) {
             $article=News::GetOne($_GET['id']);
             $view=new ViewConstuctor();
