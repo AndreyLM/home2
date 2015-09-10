@@ -12,13 +12,13 @@ class News
     protected  static $tableName="News";
 
 
-
+/*
     public  static  function GetOne($id)
     {
         $db=new mysql_db();
         return $db->GetById(self::TABLE, $id);
     }
-
+*/
     public static function AddNews($title, $text)
     {
         $db=new mysql_db();

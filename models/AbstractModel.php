@@ -9,18 +9,20 @@
 abstract class AbstractModel
 {
     protected static $tableName;
-    protected $dbh;
+
 
     public function __construct()
     {
-        $dsn='mysql:dbname=home2;host=localhost';
-        $this->dbh=new PDO($dsn, 'root', '');
+
     }
 
     private function query($query, $param=[])
     {
+        $dsn='mysql:dbname=home2;host=localhost';
+        $dbh=new PDO($dsn, 'root', '');
+
         $className=get_called_class();
-        $sth=$this->dbh->prepare($query);
+        $sth=$dbh->prepare($query);
         $sth->execute($param);
         return $sth->fetchAll(PDO::FETCH_CLASS, $className );
     }
@@ -29,6 +31,13 @@ abstract class AbstractModel
     {
         $query="SELECT * FROM ".static::$tableName;
         return self::query($query);
+    }
+
+    public  static  function GetOne($id)
+    {
+        $query="SELECT * FROM ".static::$tableName.' WHERE id=:id';
+        $param=['id'=>$id];
+        return self::query($query, $param);
     }
 
 
