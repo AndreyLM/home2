@@ -25,11 +25,14 @@ class AdminController
     }
 
     public function actionIndex()
-    {
+    {/*
         if(isset($_POST['submit'])) {
           $this->actionAddNews();
         } else {
             include __DIR__.'/../views/Admin/AddNews.php';
-        }
+        }*/
+        echo 'Index.php';
+
+        News::AddRecord(['title', 'text']);
     }
 }

@@ -8,7 +8,7 @@
  */
 abstract class AbstractModel
 {
-    protected static $tableName;
+    protected static $tableName='sdtClass';
 
 
     public function __construct()
@@ -22,9 +22,19 @@ abstract class AbstractModel
         $dbh=new PDO($dsn, 'root', '');
 
         $className=get_called_class();
+
         $sth=$dbh->prepare($query);
         $sth->execute($param);
         return $sth->fetchAll(PDO::FETCH_CLASS, $className );
+    }
+
+    private function exec($query)
+    {
+        $dsn='mysql:dbname=home2;host=localhost';
+        $dbh=new PDO($dsn, 'root', '');
+
+        $sth=$dbh->prepare($query, $param=[]);
+
     }
 
     public static function newsGetAll()
@@ -39,6 +49,15 @@ abstract class AbstractModel
         $param=['id'=>$id];
         return self::query($query, $param);
     }
+
+    public static function AddRecord($colums=[], $values=[])
+    {
+        $col=implode(',  ', $colums);
+        echo $col;
+        die;
+        $query='INSERT INTO '.self::$tableName;
+    }
+
 
 
 }
