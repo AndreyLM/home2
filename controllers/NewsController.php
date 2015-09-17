@@ -9,7 +9,7 @@ class NewsController
         $article=News::newsGetAll();
         $view=new ViewConstuctor();
         $view->items=$article;
-        $view->Display('news');
+        $view->Display('News/news');
 
     }
 
@@ -20,7 +20,7 @@ class NewsController
             $article=News::GetOne($_GET['id']);
             $view=new ViewConstuctor();
             $view->article=$article;
-            $view->Display('DisplayArticle');
+            $view->Display('News/DisplayArticle');
 
         } else {
             echo 'The article you are searching is not available';

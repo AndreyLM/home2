@@ -24,6 +24,24 @@ class AdminController
         exit;
     }
 
+    public function actionAdd()
+    {
+        if (isset($_POST['submit'])) {
+            if (empty($_POST['title']) || empty($_POST['text'])) {
+                echo 'Please enter title or text.';
+            } else {
+                echo 'New article was succefully added. ';
+            }
+
+            echo '<a href="/home2/admin.php">Back to admit panel.</a>';
+            exit;
+
+        }
+
+        $view=new ViewConstuctor();
+        $view->Display('Admin/AddNews');
+    }
+
     public function actionIndex()
     {/*
         if(isset($_POST['submit'])) {
@@ -31,8 +49,11 @@ class AdminController
         } else {
             include __DIR__.'/../views/Admin/AddNews.php';
         }*/
-        echo 'Index.php';
 
-        News::AddRecord(['title', 'text']);
+        $view=new ViewConstuctor();
+        $view->titles=News::newsGetAll();
+        $view->Display('Admin/Index');
+
+       // News::AddRecord(['title', 'text']);
     }
 }

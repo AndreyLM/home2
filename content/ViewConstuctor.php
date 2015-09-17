@@ -23,16 +23,16 @@ class ViewConstuctor
     public function Display($viewName)
     {
 
-        foreach ($this->data as $key=>$val) {
-            $$key=$val;
+        if (!empty($this->data)) {
+            foreach ($this->data as $key=>$val) {
+                $$key=$val;
+            }
         }
 
-        if (file_exists(__DIR__.'/../views/News/'.$viewName.'.php')) {
-            include __DIR__.'/../views/News/'.$viewName.'.php';
-        } elseif (file_exists(__DIR__.'/../views/Admin/'.$viewName.'.php')) {
-            include __DIR__.'/../views/Admin/'.$viewName.'.php';
 
-        } else {
+        if (file_exists(__DIR__.'/../views/'.$viewName.'.php')) {
+            include __DIR__.'/../views/'.$viewName.'.php';
+        }  else {
             echo 'Could not find the page '.$viewName.'.php';
         }
 

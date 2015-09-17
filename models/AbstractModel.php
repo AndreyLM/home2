@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Андрей
- * Date: 09.09.2015
- * Time: 15:17
- */
+
 abstract class AbstractModel
 {
     protected static $tableName='sdtClass';
