@@ -30,7 +30,16 @@ class AdminController
             if (empty($_POST['title']) || empty($_POST['text'])) {
                 echo 'Please enter title or text.';
             } else {
-                echo 'New article was succefully added. ';
+
+                $title=$_POST['title'];
+                $text=$_POST['text'];
+
+                if(true===News::AddNews($title, $text)) {
+                    echo 'New article was succefully added. ';
+                } else {
+                    echo 'Error adding news';
+                }
+
             }
 
             echo '<a href="/home2/admin.php">Back to admit panel.</a>';

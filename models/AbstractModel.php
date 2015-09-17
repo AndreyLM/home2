@@ -23,12 +23,13 @@ abstract class AbstractModel
         return $sth->fetchAll(PDO::FETCH_CLASS, $className );
     }
 
-    private function exec($query)
+    private function exec($query, $param=[])
     {
         $dsn='mysql:dbname=home2;host=localhost';
         $dbh=new PDO($dsn, 'root', '');
 
-        $sth=$dbh->prepare($query, $param=[]);
+        $sth=$dbh->prepare($query);
+        return $sth->execute($param);
 
     }
 
@@ -45,12 +46,22 @@ abstract class AbstractModel
         return self::query($query, $param);
     }
 
-    public static function AddRecord($colums=[], $values=[])
+    protected function AddRecord($table=[])
     {
-        $col=implode(',  ', $colums);
-        echo $col;
-        die;
-        $query='INSERT INTO '.self::$tableName;
+        $cols=[];
+        $pars=[];
+
+        foreach ($table as $key=>$value) {
+            $pars[]=':'.$key;
+            $cols[]=$key;
+        }
+
+        $columns=implode(', ', $cols);
+        $params=implode(', ', $pars);
+
+        $query='INSERT INTO '.static::$tableName.' ('.$columns.') VALUES ('.$params.')';
+
+        return self::exec($query, $table);
     }
 
 
