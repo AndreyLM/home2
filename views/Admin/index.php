@@ -20,7 +20,7 @@
                 <td><?php echo $i++.')'; ?></td>
                 <td><?php echo $value->id; ?></td>
                 <td><?php echo $value->title; ?></td>
-                <td><?php echo 'Delete'; ?></td>
+                <td><a href="/home2/admin.php?Action=Remove&id=<?php echo $value->id; ?>">Delete</a></td>
                 <td><?php echo 'Update'; ?></td>
             </tr>
         <?php endforeach; ?>

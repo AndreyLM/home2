@@ -64,6 +64,12 @@ abstract class AbstractModel
         return self::exec($query, $table);
     }
 
+    public static  function newsRemove($id)
+    {
+        $query='DELETE FROM '.static::$tableName.' WHERE id=:id';
+        $param=['id'=>$id];
 
+        return self::exec($query, $param);
+    }
 
 }
