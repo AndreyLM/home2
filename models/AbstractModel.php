@@ -28,6 +28,8 @@ abstract class AbstractModel
         $dsn='mysql:dbname=home2;host=localhost';
         $dbh=new PDO($dsn, 'root', '');
 
+
+
         $sth=$dbh->prepare($query);
         return $sth->execute($param);
 
@@ -43,7 +45,7 @@ abstract class AbstractModel
     {
         $query="SELECT * FROM ".static::$tableName.' WHERE id=:id';
         $param=['id'=>$id];
-        return self::query($query, $param);
+        return self::query($query, $param)[0];
     }
 
     protected function AddRecord($table=[])
@@ -70,6 +72,30 @@ abstract class AbstractModel
         $param=['id'=>$id];
 
         return self::exec($query, $param);
+    }
+
+    protected function Update($id, $table=[])
+    {
+        $statement='';
+
+        foreach ($table as $key=>$value) {
+            $statement=$statement.', '.$key.'=:'.$key;
+        }
+
+        $stm=substr($statement, 1);
+
+        $query='UPDATE '.static::$tableName.' SET '.$stm.' WHERE id=:id';
+        $table['id']=$id;
+
+        return self::exec($query, $table);
+    }
+
+    public static function findByColumn($column, $value)
+    {
+        $query='SELECT * FROM '.static::$tableName.' WHERE '.$column.'=:'.$column;
+        $param=[$column=>$value];
+
+        return self::query($query, $param);
     }
 
 }

@@ -21,7 +21,7 @@
                 <td><?php echo $value->id; ?></td>
                 <td><?php echo $value->title; ?></td>
                 <td><a href="/home2/admin.php?Action=Remove&id=<?php echo $value->id; ?>">Delete</a></td>
-                <td><?php echo 'Update'; ?></td>
+                <td><a href="/home2/admin.php?Action=Update&id=<?php echo $value->id; ?>">Update</a></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

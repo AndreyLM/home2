@@ -1,8 +1,8 @@
-<?php foreach($article as $key=>$value): ?>
-    <h1><?php echo $value->title; ?></h1>
-    <p><?php echo $value->text; ?></p>
-    <p><?php echo $value->created_date; ?> </p>
-<?php endforeach; ?>
+
+    <h1><?php echo $article->title; ?></h1>
+    <p><?php echo $article->text; ?></p>
+    <p><?php echo $article->created_date; ?> </p>
+
     <p>
         <a href="/home2/index.php">Back to main page...</a>
     </p>

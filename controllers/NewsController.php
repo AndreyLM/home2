@@ -6,7 +6,8 @@ class NewsController
     public function actionGetAll()
     {
 
-        $article=News::newsGetAll();
+        //$article=News::newsGetAll();
+        $article=News::findByColumn('title', 'Title 1');
         $view=new ViewConstuctor();
         $view->items=$article;
         $view->Display('News/news');

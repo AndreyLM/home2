@@ -27,5 +27,14 @@ class News
         return self::AddRecord($table);
     }
 
+    public static function UpdateNews($id, $title, $text)
+    {
+        $table['title']=$title;
+        $table['text']=$text;
+
+        return self::Update($id, $table);
+
+    }
+
 
 }
