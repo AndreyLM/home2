@@ -36,5 +36,17 @@ class News
 
     }
 
+    public static function Save($id=0, $title, $text)
+    {
+        $table['title']=$title;
+        $table['text']=$text;
+
+        if ($id===0) {
+            return self::AddRecord($table);
+        } else {
+            return self::Update($id, $table);
+        }
+    }
+
 
 }
