@@ -3,99 +3,38 @@
 
 abstract class AbstractModel
 {
-    protected static $tableName='sdtClass';
-
+    protected static $tableName = 'sdtClass';
+    protected $db;
 
     public function __construct()
     {
-
+        $this->db = new db(get_called_class(), static::$tableName);
     }
 
-    private function query($query, $param=[])
+
+    public static function GetAll()
     {
-        $dsn='mysql:dbname=home2;host=localhost';
-        $dbh=new PDO($dsn, 'root', '');
+        $db = new db(get_called_class(), static::$tableName);
 
-        $className=get_called_class();
-
-        $sth=$dbh->prepare($query);
-        $sth->execute($param);
-        return $sth->fetchAll(PDO::FETCH_CLASS, $className );
+        return $db->GetAll();
     }
 
-    private function exec($query, $param=[])
+
+    public static function GetOne($id)
     {
-        $dsn='mysql:dbname=home2;host=localhost';
-        $dbh=new PDO($dsn, 'root', '');
+        $db = new db(get_called_class(), static::$tableName);
 
-
-
-        $sth=$dbh->prepare($query);
-        return $sth->execute($param);
-
+        return $db->GetOne($id);
     }
 
-    public static function newsGetAll()
-    {
-        $query="SELECT * FROM ".static::$tableName;
-        return self::query($query);
-    }
-
-    public  static  function GetOne($id)
-    {
-        $query="SELECT * FROM ".static::$tableName.' WHERE id=:id';
-        $param=['id'=>$id];
-        return self::query($query, $param)[0];
-    }
-
-    protected function AddRecord($table=[])
-    {
-        $cols=[];
-        $pars=[];
-
-        foreach ($table as $key=>$value) {
-            $pars[]=':'.$key;
-            $cols[]=$key;
-        }
-
-        $columns=implode(', ', $cols);
-        $params=implode(', ', $pars);
-
-        $query='INSERT INTO '.static::$tableName.' ('.$columns.') VALUES ('.$params.')';
-
-        return self::exec($query, $table);
-    }
-
-    public static  function newsRemove($id)
-    {
-        $query='DELETE FROM '.static::$tableName.' WHERE id=:id';
-        $param=['id'=>$id];
-
-        return self::exec($query, $param);
-    }
-
-    protected function Update($id, $table=[])
-    {
-        $statement='';
-
-        foreach ($table as $key=>$value) {
-            $statement=$statement.', '.$key.'=:'.$key;
-        }
-
-        $stm=substr($statement, 1);
-
-        $query='UPDATE '.static::$tableName.' SET '.$stm.' WHERE id=:id';
-        $table['id']=$id;
-
-        return self::exec($query, $table);
-    }
 
     public static function findByColumn($column, $value)
     {
-        $query='SELECT * FROM '.static::$tableName.' WHERE '.$column.'=:'.$column;
-        $param=[$column=>$value];
+        $data[$column]=$value;
+        $db=new db(get_called_class(), static::$tableName);
 
-        return self::query($query, $param);
+        return $db->FindByColumn($data);
+
     }
 
 }

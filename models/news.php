@@ -1,9 +1,11 @@
 <?php
-require_once __DIR__.'/../content/sql_db.php';
+require_once __DIR__ . '/../content/db.php';
 require_once __DIR__.'/AbstractModel.php';
 
 class News
     extends AbstractModel
+
+
 {
     public $id;
     public $title;
@@ -12,41 +14,33 @@ class News
     protected  static $tableName="News";
 
 
-/*
-    public  static  function GetOne($id)
+    public function __construct()
     {
-        $db=new mysql_db();
-        return $db->GetById(self::TABLE, $id);
-    }
-*/
-    public static function AddNews($title, $text)
-    {
-        $table['title']=$title;
-        $table['text']=$text;
-
-        return self::AddRecord($table);
+        parent::__construct();
     }
 
-    public static function UpdateNews($id, $title, $text)
+
+    public function Remove()
     {
-        $table['title']=$title;
-        $table['text']=$text;
+        if(false===$this->db->Remove($this->id)) {
+            return false;
+        };
 
-        return self::Update($id, $table);
-
+        return $this->id;
     }
 
-    public static function Save($id=0, $title, $text)
-    {
-        $table['title']=$title;
-        $table['text']=$text;
 
-        if ($id===0) {
-            return self::AddRecord($table);
-        } else {
-            return self::Update($id, $table);
+    public function Save()
+    {
+
+        if(isset($this->id)) {
+            $data['id']=$this->id;
         }
-    }
+        $data['title']=$this->title;
+        $data['text']=$this->text;
 
+
+        return $this->db->Update($data);
+    }
 
 }
