@@ -8,7 +8,7 @@ class AdminController
     {
 
         $view=new ViewConstuctor();
-        $view->titles=News::newsGetAll();
+        $view->titles=News::GetAll();
         $view->Display('Admin/Index');
 
     }
@@ -21,10 +21,11 @@ class AdminController
                 echo 'Please enter title or text.';
             } else {
 
-                $title=$_POST['title'];
-                $text=$_POST['text'];
+                $article=new News();
+                $article->title=$_POST['title'];
+                $article->text=$_POST['text'];
 
-                if(true===News::AddNews($title, $text)) {
+                if(true===$article->Save()) {
                     echo 'New article was succefully added. ';
                 } else {
                     echo 'Error adding news';
@@ -41,41 +42,43 @@ class AdminController
         $view->Display('Admin/AddNews');
     }
 
+
     public function actionRemove()
     {
         if (false===isset($_GET['id'])) {
-            echo 'Cannot delete this article';
+            echo 'The article was not found';
             echo '<br><a href="/home2/admin.php">Back to admin page.</a> ';
             exit;
         }
 
-        $id=$_GET['id'];
+        $article=News::GetOne($_GET['id']);
+        $res=$article->Remove();
 
-        if (true===News::newsRemove($id)) {
-            echo 'The article was successfuly removed';
-            echo '<br><a href="/home2/admin.php">Back to admin page.</a> ';
-            exit;
+        if (false===$res) {
+            echo 'Cannnot delete this article';
+        } else {
+            echo 'The article with id='.$res.' was delete';
         }
 
-        echo 'Cannot delete this record';
         echo '<br><a href="/home2/admin.php">Back to admin page.</a> ';
     }
+
 
     public function actionUpdate()
     {
 
         if(isset($_POST['submit'])) {
-            if (empty($_POST['title']) || empty($_POST)) {
+            if (empty($_POST['title']) || empty($_POST['text'])) {
                 echo 'Title or text could not be empty';
                 echo '<br><a href="/home2/admin.php">Back to admin panel</a>';
                 exit;
             }
 
-            $id=$_POST['id'];
-            $title=$_POST['title'];
-            $text=$_POST['text'];
+            $article=News::GetOne($_POST['id']);
+            $article->title=$_POST['title'];
+            $article->text=$_POST['text'];
 
-            if (true===News::UpdateNews($id, $title, $text)) {
+            if (true===$article->Save()) {
                 echo 'Article was updated';
                 echo '<br><a href="/home2/admin.php">Back to admin panel</a>';
                 exit;
@@ -86,23 +89,17 @@ class AdminController
             }
         }
 
+
         if(!isset($_GET['id'])) {
             echo 'Could not found the article';
             echo '<br><a href="/home2/admin.php">Back to admin panel</a>';
             exit;
         }
 
-        $id=$_GET['id'];
-
-
-
 
         $view=new ViewConstuctor();
-        $view->article=News::GetOne($id);
+        $view->article=News::GetOne($_GET['id']);
         $view->Display('Admin/Update');
-
-
-
     }
 
 

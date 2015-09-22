@@ -103,7 +103,6 @@ class db
     public function FindByColumn($data=[])
     {
         $key=array_keys($data)[0];
-
         $query='SELECT * FROM '.$this->tableName
                 .' WHERE '.$key.'=:'.$key;
 
