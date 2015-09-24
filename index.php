@@ -7,10 +7,14 @@ $meth=isset($_GET['Action']) ? $_GET['Action'] : 'GetAll';
 
 $controllerClassName=$contr.'Controller';
 $action='action'.$meth;
+try {
+    $controller= new $controllerClassName;
+    $controller->$action();
+} catch (E404Exception $e) {
+    header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+    include("content/NotFound.php");
+}
 
-$controller= new $controllerClassName;
-
-$controller->$action();
 
 
 

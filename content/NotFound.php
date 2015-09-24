@@ -1,7 +1,2 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Андрей
- * Date: 24.09.2015
- * Time: 15:31
- */
+echo 'Sorry the page you asked for are not found';

@@ -1,7 +1,7 @@
 <?php
 
 
-class AdminController
+class AdminController extends E404Exception
 {
 
     public function actionIndex()

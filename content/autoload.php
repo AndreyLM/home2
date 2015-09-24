@@ -10,5 +10,9 @@ function __autoload($class='NewsController')
         require_once __DIR__.'/../views/'.$class.'.php';
     } elseif (file_exists(__DIR__.'/'.$class.'.php')) {
         require_once __DIR__ . '/' . $class . '.php';
+    } elseif (file_exists(__DIR__.'/MyExeptions.php')) {
+        require_once __DIR__.'/MyExeptions.php';
+    } else {
+        throw new Exception();
     }
 }

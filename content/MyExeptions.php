@@ -1,7 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Андрей
- * Date: 24.09.2015
- * Time: 14:31
- */
+
+
+class E404Exception extends Exception
+{
+    public function __construct($message)
+    {
+        parent::__construct($message);
+    }
+
+}
