@@ -13,6 +13,9 @@ try {
 } catch (E404Exception $e) {
     header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
     include("content/NotFound.php");
+} catch (E403Exception $e) {
+    header('HTTP/1.1 403 Forbidden');
+    include('content/Forbidden.php');
 }
 
 

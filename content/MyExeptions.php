@@ -9,3 +9,8 @@ class E404Exception extends Exception
     }
 
 }
+
+class E403Exception extends Exception
+{
+
+}

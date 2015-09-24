@@ -9,7 +9,12 @@ class db
 
     public function __construct($className='stdClass', $tableName)
     {
-        $this->dbh=new PDO('mysql:dbname=home2;host=localhost', 'root', '');
+        try {
+            $this->dbh=new PDO('mysql:dbname=home2;host=localhost', 'root', '');
+        } catch (PDOException $e) {
+            throw new E403Exception();
+        }
+
         $this->className=$className;
         $this->tableName=$tableName;
     }
@@ -79,6 +84,10 @@ class db
         $query='SELECT * FROM '.$this->tableName.
             ' WHERE id=:id';
         $param[':id']=$id;
+
+        $res=$this->query($query, $param);
+
+        if(empty($res)) throw new E404Exception('The article with id='.$id.' was not found');
 
         return $this->query($query, $param)[0];
     }
