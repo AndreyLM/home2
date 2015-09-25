@@ -27,6 +27,7 @@
         </tbody>
     </table>
     <p><a href="/home2/admin.php?Action=Add">+Add new article</a></p>
+    <p><a href="/home2/admin.php?Action=Log">Show log file</a></p>
 </body>
 </html>
 

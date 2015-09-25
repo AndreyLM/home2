@@ -13,6 +13,9 @@ function __autoload($class='NewsController')
     } elseif (file_exists(__DIR__.'/MyExeptions.php')) {
         require_once __DIR__.'/MyExeptions.php';
     } else {
+        $log=new log();
+        $log->write('Could not find the page');
+
         throw new Exception();
     }
 }

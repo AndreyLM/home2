@@ -13,6 +13,14 @@ class AdminController extends E404Exception
 
     }
 
+    public function actionLog()
+    {
+        $view=new ViewConstuctor();
+        $log=new log();
+        $view->log=$log->getMessage();
+        $view->Display('Admin/Log');
+    }
+
 
     public function actionAdd()
     {

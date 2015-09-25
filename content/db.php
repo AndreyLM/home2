@@ -2,7 +2,7 @@
 
 class db
 {
-    const DSN='myslq:dbname=home2,host=localhost';
+    const DSN='mysql:dbname=home2;host=localhost;';
     private $className;
     private $tableName;
 
@@ -10,8 +10,12 @@ class db
     public function __construct($className='stdClass', $tableName)
     {
         try {
-            $this->dbh=new PDO('mysql:dbname=home2;host=localhost', 'root', '');
+            $this->dbh=new PDO(self::DSN, 'root', '');
         } catch (PDOException $e) {
+
+            $log=new log();
+            $log->write($e->getMessage());
+
             throw new E403Exception();
         }
 
@@ -22,19 +26,35 @@ class db
 
     private function query($query, $param=[])
     {
+        try {
+            $stm=$this->dbh->prepare($query);
+            $stm->execute($param);
+            return $stm->fetchAll(PDO::FETCH_CLASS, $this->className);
+        } catch (PDOException $e) {
+            $log=new log();
+            $log->write($e->getMessage());
 
-        $stm=$this->dbh->prepare($query);
-        $stm->execute($param);
-        return $stm->fetchAll(PDO::FETCH_CLASS, $this->className);
+            throw new E403Exception();
+        }
+
+
 
     }
 
 
     private function exec($query, $param=[])
     {
+        try {
+            $stm=$this->dbh->prepare($query);
+            return $stm->execute($param);
+        } catch (PDOException $e) {
+            $log=new log();
+            $log->write($e->getMessage());
 
-        $stm=$this->dbh->prepare($query);
-        return $stm->execute($param);
+            throw new E403Exception();
+        }
+
+
 
     }
 
@@ -87,7 +107,12 @@ class db
 
         $res=$this->query($query, $param);
 
-        if(empty($res)) throw new E404Exception('The article with id='.$id.' was not found');
+        if(empty($res)) {
+            $log=new log();
+            $log->write('Trying to get unexisting article');
+
+            throw new E404Exception('The article with id='.$id.' was not found');
+        }
 
         return $this->query($query, $param)[0];
     }
