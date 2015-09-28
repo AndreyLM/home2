@@ -15,6 +15,7 @@ class db
 
             $log=new log();
             $log->write($e->getMessage());
+            echo 'erro'; die;
 
             throw new E403Exception();
         }
@@ -95,6 +96,7 @@ class db
     public function GetAll()
     {
         $query='SELECT * FROM '.$this->tableName;
+
         return $this->query($query);
     }
 

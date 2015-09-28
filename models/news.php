@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\home2\models;
+namespace App\models;
 
 require_once __DIR__ . '/../content/db.php';
 require_once __DIR__.'/AbstractModel.php';

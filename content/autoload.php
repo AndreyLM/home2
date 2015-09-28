@@ -13,12 +13,15 @@ function __autoload($class='NewsController')
         require_once __DIR__ . '/' . $class . '.php';
     } else {
         $path=explode('\\', $class);
-        var_dump($path); die;
+        $str=explode(DIRECTORY_SEPARATOR, __DIR__);
 
+        array_pop($str);
         unset($path[0]);
-        unset($path[1]);
-        $rightPath=implode(DIRECTORY_SEPARATOR, $path);
-        var_dump($rightPath);
-        die;
+
+        $real_path=array_merge($str, $path);
+        $path_str=implode(DIRECTORY_SEPARATOR, $real_path);
+
+
+        require_once $path_str.'.php';
     }
 }

@@ -14,6 +14,7 @@ abstract class AbstractModel
 
     public static function GetAll()
     {
+
         $db = new db(get_called_class(), static::$tableName);
 
         return $db->GetAll();
