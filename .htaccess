@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteBase /home2/
+
+RewriteRule ^(.*).$ index.php

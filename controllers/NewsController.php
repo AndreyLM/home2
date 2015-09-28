@@ -7,7 +7,7 @@ class NewsController
     {
 
         $view=new ViewConstuctor();
-        $view->items=News::GetAll();
+        $view->items=App\home2\models\News::GetAll();
         $view->Display('News/news');
 
     }

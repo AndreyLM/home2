@@ -1,9 +1,14 @@
 <?php
+
+//var_dump($_SERVER['REQUEST_URI']);
 require_once __DIR__.'/content/autoload.php';
 
+$path=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$pathData=explode('/', $path);
 
-$contr=isset($_GET['Contr']) ? $_GET['Contr'] : 'News';
-$meth=isset($_GET['Action']) ? $_GET['Action'] : 'GetAll';
+
+$contr=(isset($pathData[2]) && !empty($pathData[2])) ? $pathData[2] : 'News';
+$meth=(isset($pathData[3]) && !empty($pathData[3])) ? ucfirst($pathData[3]) : 'GetAll';
 
 $controllerClassName=$contr.'Controller';
 $action='action'.$meth;

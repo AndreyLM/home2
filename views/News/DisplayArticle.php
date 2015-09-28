@@ -4,5 +4,5 @@
     <p><?php echo $article->created_date; ?> </p>
 
     <p>
-        <a href="/home2/index.php">Back to main page...</a>
+        <a href="/home2/">Back to main page...</a>
     </p>
