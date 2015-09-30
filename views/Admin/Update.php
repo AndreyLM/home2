@@ -5,7 +5,7 @@
     <title>Update article</title>
 </head>
 <body>
-    <form action="/home2/admin.php?Action=Update" method="post">
+    <form action="/home2/admin/Update" method="post">
         <label for="title">Title:</label>
         <input type="text" name="title" value="<?php echo $article->title; ?>" /><br>
         <label for="text">Text</label><br>

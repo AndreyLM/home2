@@ -20,14 +20,14 @@
                 <td><?php echo $i++.')'; ?></td>
                 <td><?php echo $value->id; ?></td>
                 <td><?php echo $value->title; ?></td>
-                <td><a href="/home2/admin.php?Action=Remove&id=<?php echo $value->id; ?>">Delete</a></td>
-                <td><a href="/home2/admin.php?Action=Update&id=<?php echo $value->id; ?>">Update</a></td>
+                <td><a href="/home2/admin/Remove?id=<?php echo $value->id; ?>">Delete</a></td>
+                <td><a href="/home2/admin/Update?id=<?php echo $value->id; ?>">Update</a></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
-    <p><a href="/home2/admin.php?Action=Add">+Add new article</a></p>
-    <p><a href="/home2/admin.php?Action=Log">Show log file</a></p>
+    <p><a href="/home2/admin/Add">+Add new article</a></p>
+    <p><a href="/home2/admin/Log">Show log file</a></p>
 </body>
 </html>
 

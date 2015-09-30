@@ -1,13 +1,16 @@
 <?php
 
+namespace App\controllers;
 
-class NewsController
+use App\models\News as NewsModel;
+
+class News
 {
-    public function actionGetAll()
+    public function actionIndex()
     {
 
-        $view=new ViewConstuctor();
-        $view->items=App\models\News::GetAll();
+        $view=new \ViewConstuctor();
+        $view->items=NewsModel::GetAll();
         
         $view->Display('News/news');
 
@@ -20,8 +23,8 @@ class NewsController
         }
 
         try {
-            $view=new ViewConstuctor();
-            $view->article=News::GetOne($_GET['id']);
+            $view=new \ViewConstuctor();
+            $view->article=NewsModel::GetOne($_GET['id']);
             $view->Display('News/DisplayArticle');
         } catch (E404Exception $e) {
             header('HTTP/1.0 404 Not Found');

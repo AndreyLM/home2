@@ -8,6 +8,6 @@
     <?php foreach($log as $key=>$value) :?>
         <p><?php echo $value; ?></p>
     <?php endforeach; ?>
-    <p><a href="/home2/admin.php?Action=Index">Beck to admin page.</a></p>
+    <p><a href="/home2/admin/Index">Beck to admin page.</a></p>
 </body>
 </html>
