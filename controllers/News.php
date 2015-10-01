@@ -16,6 +16,16 @@ class News
 
     }
 
+
+    public function actionJson()
+    {
+
+
+        return json_encode(NewsModel::GetAll());
+
+    }
+
+
     public function actionGetOne()
     {
         if(empty($_GET['id'])) {

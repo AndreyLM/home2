@@ -53,6 +53,9 @@ class Admin
     }
 
 
+
+
+
     public function actionRemove()
     {
         if (false===isset($_GET['id'])) {
