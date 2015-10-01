@@ -1,0 +1,27 @@
+1443161776  could not find driver
+1443161777  could not find driver
+1443161780  could not find driver
+1443161783  could not find driver
+0808:2525:1515  could not find driver
+0808:2525:1515  could not find driver
+0808:2525:1515  could not find driver
+0808:2525:1515  could not find driver
+15/09/25 08:22:52  could not find driver
+15/09/25 08:22:53  could not find driver
+15/09/25 08:22:54  could not find driver
+15/09/25 08:22:55  could not find driver
+15/09/25 08:22:55  could not find driver
+15/09/25 08:22:56  could not find driver
+15/09/25 08:22:56  could not find driver
+15/09/25 08:35:39 could not find driver
+15/09/25 08:35:41 could not find driver
+15/09/25 08:35:45 could not find driver
+15/09/25 08:35:46 could not find driver
+15/09/25 08:43:58 could not find driver
+15/09/25 08:44:16 SQLSTATE[HY000] [1049] Unknown database 'home2,host=localhost'
+15/09/25 08:44:18 SQLSTATE[HY000] [1049] Unknown database 'home2,host=localhost'
+15/09/25 08:44:20 SQLSTATE[HY000] [1049] Unknown database 'home2,host=localhost'
+15/09/25 08:44:59 SQLSTATE[HY000] [1049] Unknown database 'home2,host=localhost'
+15/09/25 08:45:02 SQLSTATE[HY000] [1049] Unknown database 'home2,host=localhost'
+15/09/25 09:09:24 SQLSTATE[HY000] [1049] Unknown database 'home2,host=localhost'
+15/09/25 09:09:28 SQLSTATE[HY000] [1049] Unknown database 'home2,host=localhost'
