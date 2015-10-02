@@ -1,5 +1,7 @@
 <?php
 
+namespace App\models;
+use App\content\db;
 
 abstract class AbstractModel
 {

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\content;
+
 class db
 {
     const DSN='mysql:dbname=home2;host=localhost;';
@@ -10,10 +12,10 @@ class db
     public function __construct($className='stdClass', $tableName)
     {
         try {
-            $this->dbh=new PDO(self::DSN, 'root', '');
-        } catch (PDOException $e) {
+            $this->dbh=new \PDO(self::DSN, 'root', '');
+        } catch (\PDOException $e) {
 
-            $log=new log();
+            $log=new \log();
             $log->write($e->getMessage());
             echo 'erro'; die;
 
@@ -30,8 +32,8 @@ class db
         try {
             $stm=$this->dbh->prepare($query);
             $stm->execute($param);
-            return $stm->fetchAll(PDO::FETCH_CLASS, $this->className);
-        } catch (PDOException $e) {
+            return $stm->fetchAll(\PDO::FETCH_CLASS, $this->className);
+        } catch (\PDOException $e) {
             $log=new log();
             $log->write($e->getMessage());
 

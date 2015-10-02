@@ -1,11 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Андрей
- * Date: 05.09.2015
- * Time: 13:34
- */
+namespace App\content;
+
 class ViewConstuctor
 {
     protected $data;

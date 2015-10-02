@@ -1,5 +1,9 @@
 <?php
-require_once __DIR__.'/content/autoload.php';
+
+require_once __DIR__ . '/autoload.php';
+
+$timer =new PhpTimer();
+$timer->start('cycle');
 
 $path=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $pathData=explode('/', $path);
@@ -11,6 +15,8 @@ $controllerClassName='App\\controllers\\'.$contr;
 
 $action='action'.$meth;
 
+
+
 try {
     $controller= new $controllerClassName;
     $controller->$action();
@@ -20,5 +26,7 @@ try {
 }
 
 
-*/
 
+$timer->stop('cycle');
+
+echo var_dump($timer->getAll());

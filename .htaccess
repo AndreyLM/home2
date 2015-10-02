@@ -1,4 +1,7 @@
+RewriteRule .htaccess - [F]
 RewriteEngine On
+#Don't favicon!
 RewriteBase /home2/
-
-RewriteRule ^(.*).$ index.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [L,QSA]

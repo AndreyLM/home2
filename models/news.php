@@ -3,11 +3,13 @@
 
 namespace App\models;
 
+use App\models\AbstractModel;
+
 require_once __DIR__ . '/../content/db.php';
 require_once __DIR__.'/AbstractModel.php';
 
 class News
-    extends \AbstractModel
+    extends AbstractModel
 
 
 {

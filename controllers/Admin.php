@@ -1,7 +1,9 @@
 <?php
 
 namespace App\controllers;
+
 use App\models\News;
+use App\content\ViewConstuctor;
 
 class Admin
 {
@@ -9,7 +11,7 @@ class Admin
     public function actionIndex()
     {
 
-        $view=new \ViewConstuctor();
+        $view=new ViewConstuctor();
         $view->titles=News::GetAll();
         $view->Display('Admin/Index');
 
@@ -17,7 +19,7 @@ class Admin
 
     public function actionLog()
     {
-        $view=new \ViewConstuctor();
+        $view=new ViewConstuctor();
         $log=new \log();
         $view->log=$log->getMessage();
         $view->Display('Admin/Log');
@@ -48,7 +50,7 @@ class Admin
 
         }
 
-        $view=new \ViewConstuctor();
+        $view=new ViewConstuctor();
         $view->Display('Admin/AddNews');
     }
 
@@ -110,7 +112,7 @@ class Admin
         }
 
 
-        $view=new \ViewConstuctor();
+        $view=new ViewConstuctor();
         $view->article=News::GetOne($_GET['id']);
         $view->Display('Admin/Update');
     }
